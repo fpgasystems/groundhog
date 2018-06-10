@@ -1,4 +1,4 @@
-#groundhog
+### Project Description
 
 Groundhog implements a SATA host bus adapter. This Verilog-based project creates an easy-to-use interface between a user circuit on a Xilinx FPGA and a SATA hard drive or SSD.
 

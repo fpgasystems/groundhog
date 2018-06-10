@@ -1,0 +1,44 @@
+NET "sata1_tx_p" LOC = "C2";
+NET "sata1_tx_n" LOC = "C1";
+NET "sata1_rx_p" LOC = "B8";
+NET "sata1_rx_n" LOC = "B7";
+
+
+#NET "sata2_tx_p" LOC = "B4";
+#NET "sata2_tx_n" LOC = "B3";
+#NET "sata2_rx_p" LOC = "A6";
+#NET "sata2_rx_n" LOC = "A5";
+
+
+
+################################## Clock Constraints ##########################
+
+
+NET "hba_inst/gth_refclk" TNM_NET = "q8_clk0_refclk_i";
+TIMESPEC "TS_q8_clk0_refclk_i" = PERIOD "q8_clk0_refclk_i" 6.667;
+ 
+NET "hba_inst/logic_clk" TNM_NET = "logic_clk_i";
+TIMESPEC "TS_logic_clk_i" = PERIOD "logic_clk_i" 6.667;
+
+    
+# DRP Clock Constraint
+#NET "sataLoopback/drpclk_in_i" TNM_NET = "drpclk_in_i";
+#TIMESPEC "TS_drpclk_in_i" = PERIOD "drpclk_in_i" 16.667;
+ 
+# User Clock Constraints
+NET "sata_sys_clock" TNM_NET = "sata_sys_clock_i";
+TIMESPEC "TS_sata_sys_clock_i" = PERIOD "sata_sys_clock_i" 6.667;
+
+
+####################### GT reference clock constraints #######################
+
+NET "MGTREFCLK_P" LOC = "E10";
+NET "MGTREFCLK_N" LOC = "E9";
+
+################################# mgt wrapper constraints #####################
+
+##---------- Set placement for gt0_gth_wrapper_i/GTHE2_CHANNEL ------
+INST hba_inst*gthe2_i LOC=GTHE2_CHANNEL_X1Y38;
+
+#INST sataLoopback/sata2/GTHSATA1_init_i/GTHSATA1_i/gt0_GTHSATA1_i/gthe2_i LOC=GTHE2_CHANNEL_X1Y39;
+
